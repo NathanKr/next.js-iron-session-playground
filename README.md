@@ -1,3 +1,6 @@
+<h2>Introduction</h2>
+This project demonstrates how to securely persist session data using encrypted cookies with iron-session. Next.js app is used but it can be used also on Node.js/Express ...
+
 <h2>Motivation</h2>
 In post2youtube i need to login to google to get a code string which is used to get access token for youtube api. I have poc for this in <a href='https://github.com/NathanKr/next.js-youtube-api-outh2-private'>next.js-youtube-api-outh2-private</a> but i need to login every time. The solution is to persist the code that we got and you can persist it in cookie (check cookie poc <a href='https://github.com/NathanKr/cookie-playground-private'>cookie-playground-private</a>) but it appear as clear text which is a security risk. 
 
