@@ -9,7 +9,7 @@ A package name iron-sesion which use cookie but also encrypt it and can be used 
 <h3>set value in cookie</h3>
 
 ```ts
-    const session = await getIronSessionDefault(req, res);
+    const session = await getIronSessionDefaultMaxAge(req, res);
     session.value1 = COOKIE_VALUE1;
     await session.save(); // --- encrypt the session data and set cookie
 ```
@@ -17,27 +17,28 @@ A package name iron-sesion which use cookie but also encrypt it and can be used 
 <h3>get value from cookie</h3>
 
 ```ts
-  const session = await getIronSessionDefault(req, res);
+  const session = await getIronSessionDefaultMaxAge(req, res);
   const cookieValue = session.value1;
 
 ```
 
-<h3>getIronSessionDefault</h3>
+<h3>getIronSessionDefaultMaxAge</h3>
 
 
 ```ts
-function getIronSessionDefault(
+function getIronSessionDefaultMaxAge(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<IronSession<IronSessionData>> {
   const sessionOptions = {
     password: process.env.IRON_SESSION_PASSWORD!,
     cookieName: COOKIE_NAME,
+    maxAge: 60 * 60 * 24 * 7, // --- here 1 week
   };
   return getIronSession<IronSessionData>(req, res, sessionOptions);
 }
 ```
-getIronSessionDefault is just helper function but you can use sessionOptions in getIronSession to control more info like 
+getIronSessionDefaultMaxAge is just helper function but you can use sessionOptions in getIronSession to control more info like 
 
 ```ts
 {

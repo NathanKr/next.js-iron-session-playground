@@ -1,21 +1,16 @@
 import { IronSessionData } from "@/types/types";
 import { getIronSession, IronSession } from "iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
-import { COOKIE_NAME } from "./constants";
+import { COOKIE_NAME, MAX_AGE_MS } from "./constants";
 
-/**
- * Minimal setup
- * @param req 
- * @param res 
- * @returns 
- */
-export function getIronSessionDefault(
+export function getIronSessionDefaultMaxAge(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<IronSession<IronSessionData>> {
   const sessionOptions = {
     password: process.env.IRON_SESSION_PASSWORD!,
     cookieName: COOKIE_NAME,
+    maxAge: MAX_AGE_MS, 
   };
   return getIronSession<IronSessionData>(req, res, sessionOptions);
 }

@@ -1,5 +1,5 @@
 import { COOKIE_VALUE1 } from "@/logic/constants";
-import { getIronSessionDefault } from "@/logic/utils";
+import { getIronSessionDefaultMaxAge } from "@/logic/utils";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const session = await getIronSessionDefault(req, res);
+    const session = await getIronSessionDefaultMaxAge(req, res);
     session.value1 = COOKIE_VALUE1;
     await session.save(); // --- encrypt the session data and set cookie
 
