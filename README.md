@@ -1,16 +1,16 @@
 <h2>Introduction</h2>
-This project demonstrates how to securely persist session data using encrypted cookies with iron-session. While a Next.js app is used in this demonstration, the solution is also compatible with Node.js / Express.
+<p>This project demonstrates how to securely persist session data using encrypted cookies with iron-session. While a Next.js app is used in this demonstration, the solution is also compatible with Node.js/Express</p>
 
 <h2>Motivation</h2>
-In an application, post2youtube, I need to login to Google to retrieve a code that is used to obtain an access token for the YouTube API. I have a POC for this, but I need to log in every time. The solution is to persist the access token that we receive, which can be stored in a cookie (check the cookie POC <a href=https://github.com/NathanKr/cookie-playground>cookie-playground</a>). However, the cookie appears in clear text, posing a security risk.
+<p>In an application, post2youtube, I need to login to Google to retrieve a code that is used to obtain an access token for the YouTube API. I have a POC for this, but I need to log in every time. The solution is to persist the access token that we receive, which can be stored in a cookie (check the cookie POC <a href=https://github.com/NathanKr/cookie-playground>cookie-playground</a>). However, the cookie appears in clear text, posing a security risk</p>
 
 
 <h2>Solution</h2>
-The package iron-session offers a solution by using cookies to store session data but encrypting them for security. It can be seamlessly integrated with Next.js API routes and server-side props, ensuring both security and convenience.
+<p>The package iron-session offers a solution by using cookies to store session data but encrypting them for security. It can be seamlessly integrated with Next.js API routes and server-side props, ensuring both security and convenience</p>
 
 
 <h2>API : set value in cookie : /api/set-cookie</h2>
-The /api/set-cookie route allows you to set a value in the session cookie and store it in encrypted form.
+<p>The /api/set-cookie route allows you to set a value in the session cookie and store it in encrypted form</p>
 
 <pre>
 <code class='language-typescript'>  
@@ -21,7 +21,7 @@ The /api/set-cookie route allows you to set a value in the session cookie and st
 </pre>
 
 <h2>API : get value from cookie : /api/get-cookie</h2>
-The /api/get-cookie route retrieves the encrypted value stored in the session cookie.
+<p>The /api/get-cookie route retrieves the encrypted value stored in the session cookie</p>
 
 <pre>
 <code class='language-typescript'>  
@@ -32,7 +32,7 @@ The /api/get-cookie route retrieves the encrypted value stored in the session co
 </pre>
 
 <h2>API : Helper function: getIronSessionDefaultMaxAge</h2>
-The getIronSessionDefaultMaxAge helper function defines default session options, such as password, cookie name, and max age.
+<p>The getIronSessionDefaultMaxAge helper function defines default session options, such as password, cookie name, and max age</p>
 
 
 <pre>
@@ -51,7 +51,7 @@ function getIronSessionDefaultMaxAge(
 </code>
 </pre>
 
-getIronSessionDefaultMaxAge is just helper function but you can use sessionOptions in getIronSession to control more info like 
+<p>getIronSessionDefaultMaxAge is just helper function but you can use sessionOptions in getIronSession to control more info like </p>
 
 <pre>
 <code class='language-typescript'>  
