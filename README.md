@@ -61,5 +61,5 @@ getIronSessionDefaultMaxAge is just helper function but you can use sessionOptio
 
 
 
-<img src='https://raw.githubusercontent.com/NathanKr/next.js-iron-session-playground/main/figs/cookie-encrypyted-by-iron-session.png'>
+<img src='https://github.com/NathanKr/next.js-iron-session-playground/blob/main/figs/cookie-encrypyted-by-iron-session.png?raw=true'>
 
