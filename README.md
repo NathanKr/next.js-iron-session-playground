@@ -9,9 +9,7 @@ In an application, post2youtube, I need to login to Google to retrieve a code th
 The package iron-session offers a solution by using cookies to store session data but encrypting them for security. It can be seamlessly integrated with Next.js API routes and server-side props, ensuring both security and convenience.
 
 
-<h2>API</h2>
-
-<h3>set value in cookie : /api/set-cookie</h3>
+<h2>API : set value in cookie : /api/set-cookie</h2>
 The `/api/set-cookie` route allows you to set a value in the session cookie and store it in encrypted form.
 
 ```ts
@@ -20,7 +18,7 @@ The `/api/set-cookie` route allows you to set a value in the session cookie and 
     await session.save(); // --- encrypt the session data and set cookie
 ```
 
-<h3>get value from cookie : /api/get-cookie</h3>
+<h2>API : get value from cookie : /api/get-cookie</h2>
 The `/api/get-cookie` route retrieves the encrypted value stored in the session cookie.
 
 ```ts
@@ -29,7 +27,7 @@ The `/api/get-cookie` route retrieves the encrypted value stored in the session 
 
 ```
 
-<h3>Helper function: getIronSessionDefaultMaxAge</h3>
+<h2>API : Helper function: getIronSessionDefaultMaxAge</h2>
 The `getIronSessionDefaultMaxAge` helper function defines default session options, such as password, cookie name, and max age.
 
 
@@ -59,7 +57,7 @@ getIronSessionDefaultMaxAge is just helper function but you can use sessionOptio
 ```
 
 
-<h3>Password</h3>
+<h2>Password</h2>
 <p> A password is used to create a private key to encrypt the cookie stored in the browser's storage.</p>
 
 <p>You can use <a href="https://1password.com/password-generator">1Password's password generator</a> to create a strong password. Note that it generates 20-character passwords by default, while iron-session requires 32 characters, so you can duplicate it to meet this requirement.</p>
