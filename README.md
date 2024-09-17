@@ -1,15 +1,18 @@
 <h2>Introduction</h2>
-This project demonstrates how to securely persist session data using encrypted cookies with iron-session. Next.js app is used but it can be used also on Node.js/Express ...
+This project demonstrates how to securely persist session data using encrypted cookies with iron-session. While a Next.js app is used in this demonstration, the solution is also compatible with Node.js/Express.
 
 <h2>Motivation</h2>
-In an application post2youtube i need to login to google to get a code string which is used to get access token for youtube api. I have poc for this but i need to login every time. The solution is to persist the access token that we got and you can persist it in cookie (check cookie poc <a href='https://github.com/NathanKr/cookie-playground'>cookie-playground</a>) but it appear as clear text which is a security risk. 
+In an application, post2youtube, I need to login to Google to retrieve a code that is used to obtain an access token for the YouTube API. I have a POC for this, but I need to log in every time. The solution is to persist the access token that we receive, which can be stored in a cookie (check the cookie POC <a href='https://github.com/NathanKr/cookie-playground'>cookie-playground</a>). However, the cookie appears in clear text, posing a security risk.
+
 
 <h2>Solution</h2>
-A package name iron-sesion which use cookie but also encrypt it and can be used on next.js api and also get server side props
+The package iron-session offers a solution by using cookies to store session data but encrypting them for security. It can be seamlessly integrated with Next.js API routes and server-side props, ensuring both security and convenience.
+
 
 <h2>API</h2>
 
-<h3>set value in cookie</h3>
+<h3>set value in cookie : /api/set-cookie</h3>
+The `/api/set-cookie` route allows you to set a value in the session cookie and store it in encrypted form.
 
 ```ts
     const session = await getIronSessionDefaultMaxAge(req, res);
@@ -17,7 +20,8 @@ A package name iron-sesion which use cookie but also encrypt it and can be used 
     await session.save(); // --- encrypt the session data and set cookie
 ```
 
-<h3>get value from cookie</h3>
+<h3>get value from cookie : /api/get-cookie</h3>
+The `/api/get-cookie` route retrieves the encrypted value stored in the session cookie.
 
 ```ts
   const session = await getIronSessionDefaultMaxAge(req, res);
@@ -25,7 +29,8 @@ A package name iron-sesion which use cookie but also encrypt it and can be used 
 
 ```
 
-<h3>getIronSessionDefaultMaxAge</h3>
+<h3>Helper function: getIronSessionDefaultMaxAge</h3>
+The `getIronSessionDefaultMaxAge` helper function defines default session options, such as password, cookie name, and max age.
 
 
 ```ts
@@ -41,6 +46,7 @@ function getIronSessionDefaultMaxAge(
   return getIronSession<IronSessionData>(req, res, sessionOptions);
 }
 ```
+
 getIronSessionDefaultMaxAge is just helper function but you can use sessionOptions in getIronSession to control more info like 
 
 ```ts
@@ -52,12 +58,13 @@ getIronSessionDefaultMaxAge is just helper function but you can use sessionOptio
 }
 ```
 
+
 <h3>Password</h3>
-<p> A password is used to create private key to encrypt the cookie stored on the browser storage</p>
+<p> A password is used to create a private key to encrypt the cookie stored in the browser's storage.</p>
 
-<p>You can use https://1password.com/password-generator but it create 20 char password where iron-session need 32 , so i duplicated it</p>
+<p>You can use <a href="https://1password.com/password-generator">1Password's password generator</a> to create a strong password. Note that it generates 20-character passwords by default, while iron-session requires 32 characters, so you can duplicate it to meet this requirement.</p>
 
-<p>The value i store in the cookie is value1 : HelloWorld but you can see its is encrypted on the browser</p>
+<p>The value I store in the cookie is `value1: HelloWorld`, but it is encrypted in the browser and not accessible as clear text.</p>
 
 
 
