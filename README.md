@@ -1,8 +1,8 @@
 <h2>Introduction</h2>
-This project demonstrates how to securely persist session data using encrypted cookies with iron-session. While a Next.js app is used in this demonstration, the solution is also compatible with Node.js/Express.
+This project demonstrates how to securely persist session data using encrypted cookies with iron-session. While a Next.js app is used in this demonstration, the solution is also compatible with Node.js / Express.
 
 <h2>Motivation</h2>
-In an application, post2youtube, I need to login to Google to retrieve a code that is used to obtain an access token for the YouTube API. I have a POC for this, but I need to log in every time. The solution is to persist the access token that we receive, which can be stored in a cookie (check the cookie POC <a href='https://github.com/NathanKr/cookie-playground'>cookie-playground</a>). However, the cookie appears in clear text, posing a security risk.
+In an application, post2youtube, I need to login to Google to retrieve a code that is used to obtain an access token for the YouTube API. I have a POC for this, but I need to log in every time. The solution is to persist the access token that we receive, which can be stored in a cookie (check the cookie POC <a href=https://github.com/NathanKr/cookie-playground>cookie-playground</a>). However, the cookie appears in clear text, posing a security risk.
 
 
 <h2>Solution</h2>
@@ -10,7 +10,7 @@ The package iron-session offers a solution by using cookies to store session dat
 
 
 <h2>API : set value in cookie : /api/set-cookie</h2>
-The `/api/set-cookie` route allows you to set a value in the session cookie and store it in encrypted form.
+The /api/set-cookie route allows you to set a value in the session cookie and store it in encrypted form.
 
 <pre>
 <code class='language-typescript'>  
@@ -21,7 +21,7 @@ The `/api/set-cookie` route allows you to set a value in the session cookie and 
 </pre>
 
 <h2>API : get value from cookie : /api/get-cookie</h2>
-The `/api/get-cookie` route retrieves the encrypted value stored in the session cookie.
+The /api/get-cookie route retrieves the encrypted value stored in the session cookie.
 
 <pre>
 <code class='language-typescript'>  
@@ -32,7 +32,7 @@ The `/api/get-cookie` route retrieves the encrypted value stored in the session 
 </pre>
 
 <h2>API : Helper function: getIronSessionDefaultMaxAge</h2>
-The `getIronSessionDefaultMaxAge` helper function defines default session options, such as password, cookie name, and max age.
+The getIronSessionDefaultMaxAge helper function defines default session options, such as password, cookie name, and max age.
 
 
 <pre>
@@ -70,7 +70,7 @@ getIronSessionDefaultMaxAge is just helper function but you can use sessionOptio
 
 <p>You can use <a href="https://1password.com/password-generator">1Password's password generator</a> to create a strong password. Note that it generates 20-character passwords by default, while iron-session requires 32 characters, so you can duplicate it to meet this requirement.</p>
 
-<p>The value I store in the cookie is `value1: HelloWorld`, but it is encrypted in the browser and not accessible as clear text.</p>
+<p>The value I store in the cookie is "value1: HelloWorld", but it is encrypted in the browser and not accessible as clear text.</p>
 
 
 
