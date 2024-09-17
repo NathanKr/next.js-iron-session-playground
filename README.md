@@ -59,4 +59,4 @@ getIronSessionDefaultMaxAge is just helper function but you can use sessionOptio
 
 <p>The value i store in the cookie is value1 : HelloWorld but you can see its is encrypted on the browser</p>
 
-<img src='https://github.com/your-username/your-repo-name/blob/main/figs/cookie-encrypyted-by-iron-session.png'>
+<img src='./figs/cookie-encrypyted-by-iron-session.png'>
