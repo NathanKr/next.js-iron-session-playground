@@ -12,26 +12,31 @@ The package iron-session offers a solution by using cookies to store session dat
 <h2>API : set value in cookie : /api/set-cookie</h2>
 The `/api/set-cookie` route allows you to set a value in the session cookie and store it in encrypted form.
 
-```ts
+<pre>
+<code class='language-typescript'>  
     const session = await getIronSessionDefaultMaxAge(req, res);
     session.value1 = COOKIE_VALUE1;
     await session.save(); // --- encrypt the session data and set cookie
-```
+</code>
+</pre>
 
 <h2>API : get value from cookie : /api/get-cookie</h2>
 The `/api/get-cookie` route retrieves the encrypted value stored in the session cookie.
 
-```ts
+<pre>
+<code class='language-typescript'>  
   const session = await getIronSessionDefaultMaxAge(req, res);
   const cookieValue = session.value1;
 
-```
+</code>
+</pre>
 
 <h2>API : Helper function: getIronSessionDefaultMaxAge</h2>
 The `getIronSessionDefaultMaxAge` helper function defines default session options, such as password, cookie name, and max age.
 
 
-```ts
+<pre>
+<code class='language-typescript'>  
 function getIronSessionDefaultMaxAge(
   req: NextApiRequest,
   res: NextApiResponse
@@ -43,18 +48,21 @@ function getIronSessionDefaultMaxAge(
   };
   return getIronSession<IronSessionData>(req, res, sessionOptions);
 }
-```
+</code>
+</pre>
 
 getIronSessionDefaultMaxAge is just helper function but you can use sessionOptions in getIronSession to control more info like 
 
-```ts
+<pre>
+<code class='language-typescript'>  
 {
     secure: process.env.NODE_ENV === "production", // --- default is false so can be used in http and https
     httpOnly: true, // --- default is true , cookie not accessed by javascript code on the browser
     maxAge: 60 * 60 * 24 * 7, // --- here 1 week but default is undefined so cookie delete when browser close
     path: "/", // --- default to / so relevant to all pages
 }
-```
+</code>
+</pre>
 
 
 <h2>Password</h2>
